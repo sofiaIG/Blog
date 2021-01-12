@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'blog.apps.BlogConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'django_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, '/home/sofia/PycharmProjects/pythonProject/users/templates/')],
+        'DIRS': [os.path.join(BASE_DIR)],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,8 +124,23 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 STATICFILES_DIRS = [ os.path.join(BASE_DIR,'static') ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+
+LOGIN_REDIRECT_URL = 'blog-home'
+
+LOGIN_URL = 'login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 

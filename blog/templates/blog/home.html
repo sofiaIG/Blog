@@ -9,7 +9,15 @@
               <small class="text-muted">{{ post.date_posted| date:"F d, Y" }}</small>
             </div>
             <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+
+
             <p class="article-content">{{ post.content }}</p>
+                 <form action = "{% url 'like-post' post.pk%}" method = "POST">
+          {% csrf_token %}
+          <button type="submit", name = "post_id", value = "{{ post.id }}", class = "btn btn-primary btn-sm" style="background-color: #69a075!important">Like</button>
+
+
+      </form>
            </div>
         </article>
     {% endfor %}
@@ -36,4 +44,5 @@
 
 
     {% endif %}
+
 {% endblock content%}
